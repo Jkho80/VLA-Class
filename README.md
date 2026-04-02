@@ -21,6 +21,7 @@
 
 ## 须知
 > 下面大部分流程都可在官网查看，但存在些需要大家自行查找的文件并复制到对应路径或者额外配置的文件
+
 > 本次课程使用的两个项目分别是 [RoboOrchardLab](https://github.com/HorizonRobotics/RoboOrchardLab) 和 [RoboTwin](https://github.com/robotwin-Platform/RoboTwin)
 
 
