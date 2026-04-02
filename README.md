@@ -1,17 +1,18 @@
 # 项目介绍
-基本任务（95 分）：
-- 下载 RoboOrchardLab 项目并配置 SEM 训练与推理环境 （25 分）
-- 下载 RoboTwin 仿真器项目并部署环境 （25 分）
-- 使用 RoboTwin 来生成数据 （10 分）
-- 将 RoboTwin 生成的数据转换为 SEM 格式 （10 分）
-- 训练 SEM 模型 （CPU: 5 分; CUDA：10 分）
-- 将 SEM 模型部署到 RoboTwin 中并进行验证 （15 分）
+基本任务：
+- 下载 RoboOrchardLab 项目并配置 SEM 训练与推理环境
+- 下载 RoboTwin 仿真器项目并部署环境
+- 使用 RoboTwin 来生成数据 
+- 将 RoboTwin 生成的数据转换为 SEM 格式
+- 训练 SEM 模型
+- 将 SEM 模型部署到 RoboTwin 中并进行验证
 
-附加题：
-- 训练出的 SEM 策略在 RoboTwin 仿真器中的分数接近甚至超过官方
+提分点：
+- 训练出的 SEM 策略在 RoboTwin 仿真器中的成功率
+
+创新：
 - 能够在 RoboTwin 仿真器中配置新的任务
-- 使用多卡来训练 SEM 模型
-- 在 RoboTwin 仿真器验证中实现 RTC
+- 在 RoboTwin 仿真器验证中实现一部推理并实现 RTC 算法
 
 ## 推荐配置
 - 推荐使用 conda 创建 python=3.10 的虚拟环境
