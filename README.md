@@ -11,7 +11,8 @@
 - 训练出的 SEM 策略在 RoboTwin 仿真器中的成功率
 
 创新：
-- 在 RoboTwin 仿真器验证中实现一部推理并实现 RTC 算法
+- 在 RoboTwin 仿真器验证中实现异步推理
+- 在 RoboTwin 仿真器验证中实现 RTC 算法
 
 ## 推荐配置
 - 推荐使用 conda 创建 python=3.10 的虚拟环境
