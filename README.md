@@ -16,7 +16,7 @@
 ## 推荐配置
 - 推荐使用 conda 创建 python=3.10 的虚拟环境
 - 推荐使用 Cuda 11.8 版本，其次为 Cuda 12.1
-- 推荐使用 `v0.2.0-release` 版本的 RoboOrchardLab 项目，因为 `v0.2.0-release` 版本是比较稳定的版本
+- 推荐使用 `v0.2.0-release` 版本的 RoboOrchardLab 项目
 - 推荐使用 `Challenge-Cup-2025` 版本的 RoboTwin 仿真器项目，或者 根据 SEM 推荐的 `e71140e9734e69686daa420a9be8b75a20ff4587` 版本
 
 ## 须知
