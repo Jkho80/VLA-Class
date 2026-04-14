@@ -11,8 +11,8 @@
 - 训练出的 SEM 策略在 RoboTwin 仿真器中的成功率
 
 创新：
-- 在 RoboTwin 仿真器验证中实现异步推理
-- 在 RoboTwin 仿真器验证中实现 RTC 算法
+- 在 RoboTwin 仿真验证中实现异步推理 
+- 在 RoboTwin 仿真验证中实现 RTC 算法
 
 ## 推荐配置
 - 推荐使用 conda 创建 python=3.10 的虚拟环境
@@ -84,21 +84,30 @@ python tools/ckpt_rename.py ckpt/groundingdino_swint_ogc_mmdet-822d7e9d.pth --ou
 ```
 
 ### 2.3 下载 `RoboTwin` 后下载下面的额外python依赖库
-该部分最好是在能够通过 `RoboTwin` 仿真器生成数据后再进行额外下载
+下载 `robo_orchard_lab` 到当前 python 环境
+```bash
+cd ${RoboOrchardLab}
+pip install -e .[sem]
+```
+
+查看是否已下载下列第三方库
 ```bash
 # It is recommended to use CUDA 11.8.
-torch==2.4.1
-torchmetrics==1.6.1 
-torchvision==0.19.1
-transformers==4.49.0
-lmdb==1.6.2 
-safetensors==0.5.3 
-accelerate==1.4.0 
-diffusers==0.32.2 
-timeout-decorator==0.5.0
-requests==2.32.3 
-h5py==3.13.0
+torch
+torchmetrics
+torchvision
+pytorch-kinematics
+transformers
+lmdb
+safetensors
+accelerate
+diffusers
+timeout-decorator
+requests
+h5py
 ```
+
+
 ### 2.4 数据转换
 下面的脚本是用来将 `RoboTwin` 生成的数据格式转换为 SEM 模型能够读取的格式
 ```bash
