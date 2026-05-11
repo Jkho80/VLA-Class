@@ -190,3 +190,58 @@ cp {ROBOTWIN2_PATH}/task_config/_embodiment_config.yml {ROBOTWIN2_PATH}/task_con
 cd {ROBOTWIN2_PATH}/policy/sem_policy
 sh eval.sh
 ```
+
+## 3. FAQ
+### 3.1 离线渲染失败
+```bash
+(RoboTwin) root@c1dbc96fa1bf:/workspace/RoboTwin# bash collect_data.sh put_bottles_dustbin demo_randomized 0 
+Traceback (most recent call last):
+  File "/workspace/RoboTwin/script/collect_data.py", line 5, in <module>
+    import sapien.core as sapien
+  File "/root/miniconda3/envs/RoboTwin/lib/python3.10/site-packages/sapien/__init__.py", line 21, in <module>
+    from . import _vulkan_tricks
+  File "/root/miniconda3/envs/RoboTwin/lib/python3.10/site-packages/sapien/_vulkan_tricks.py", line 71, in <module>
+    _ensure_egl_icd()
+  File "/root/miniconda3/envs/RoboTwin/lib/python3.10/site-packages/sapien/_vulkan_tricks.py", line 56, in _ensure_egl_icd
+    if any(("nvidia" in f) for f in os.listdir(d)):
+FileNotFoundError: [Errno 2] No such file or directory: '/usr/share/glvnd/egl_vendor.d'
+```
+**说明：** SAPIEN 查找 EGL Vendor ICD 失败（显卡驱动注册文件 /usr/share/glvnd/egl_vendor.d/），因为服务器/电脑只有 libcuda.so（计算）没有 libEGL.so / ICD json（图形）。
+
+1. 可以手动安装 EGL ICD
+**解决方法：** 
+```bash
+apt update
+apt install -y \
+    libegl1 \
+    libglvnd0 \
+    libgl1 \
+    libgles2
+```
+
+2. 创建 ICD 文件
+```bash
+mkdir -p /usr/share/glvnd/egl_vendor.d
+cat <<EOF > /usr/share/glvnd/egl_vendor.d/10_nvidia.json
+{
+    "file_format_version": "1.0.0",
+    "ICD": {
+        "library_path": "libEGL_nvidia.so.0"
+    }
+}
+EOF
+
+export DISPLAY=
+export EGL_PLATFORM=surfaceless
+export NVIDIA_DRIVER_CAPABILITIES=compute,graphics,utility
+
+ldconfig -p | grep EGL_nvidia
+```
+
+3. 验证 EGL 
+```bash
+apt install -y mesa-utils-extra
+eglinfo | grep NVIDIA
+# 输出：  EGL vendor: NVIDIA
+```
+
