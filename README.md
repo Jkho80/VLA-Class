@@ -36,6 +36,13 @@ git clone https://github.com/robotwin-Platform/RoboTwin.git
 ```
 使用文档可参考：[RoboTwin Usage And Installation](https://robotwin-platform.github.io/doc/usage/index.html)
 
+同时可以先检测环境是否存在 `Vulkan` 
+```bash
+vulkaninfo
+# 如果不存在则下载
+sudo apt install libvulkan1 mesa-vulkan-drivers vulkan-tools
+```
+
 ### 1.2 创建并配置 `RoboTwin` 虚拟环境
 #### 1.2.1 下载 RoboTwin 官方推荐的 python 版本
 ```bash
