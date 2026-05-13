@@ -185,6 +185,11 @@ cp -r sem_policy {ROBOTWIN2_PATH}/policy/
 cp {ROBOTWIN2_PATH}/task_config/_embodiment_config.yml {ROBOTWIN2_PATH}/task_config/agent_config.yml 
 ```
 
+选择 `EGL` 作为 `Mujoco` 的后端（无需真实物理显示屏等）
+```bash
+export MUJOCO_GL=egl
+```
+
 再执行验证脚本
 ```bash
 cd {ROBOTWIN2_PATH}/policy/sem_policy
